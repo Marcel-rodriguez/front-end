@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-function Login() {
+export default function Login() {
 
     const { push } = useHistory();
     const [ credentials, setCredentials ] = useState({
@@ -19,7 +19,9 @@ function Login() {
 
     const handleSubmit = e => {
         e.preventDefault();
+
         //post authentication token to endpoint
+
     //     axios.post('', credentials)
     //         .then(resp => {
     //             console.log(resp);
@@ -28,8 +30,8 @@ function Login() {
     //         }).catch(err => {
     //             console.log(err);
     //         })
-    // }
-
+    }
+        
     console.log(credentials);
 
   return (
@@ -55,6 +57,4 @@ function Login() {
         <button id="submit">Log in</button>
     </form>
   </div>);
-}
-
-export default Login;
+};
