@@ -1,0 +1,15 @@
+body {
+    width: 100%;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recipe-cards {
+    margin: 1rem;
+    width: 25%;
+    flex-wrap: wrap;
+}

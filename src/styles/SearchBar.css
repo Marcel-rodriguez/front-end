@@ -1,0 +1,12 @@
+.search-container {
+    margin-top: 1rem;
+}
+
+.search-container form input {
+    height: 1.1rem;
+}
+
+.search-container form button {
+    border: none;
+    background: none;
+}
