@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import "../styles/login.css";
 
 export default function Login() {
 
@@ -35,26 +36,30 @@ export default function Login() {
     console.log(credentials);
 
   return (
-  <div>
-    <h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-        <input 
-            type="text"
-            name="username"
-            value={credentials.username}
-            onChange={handleChange}
-            placeholder='username'
-            id="username"
-        />
-        <input 
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            placeholder='password'
-            id="password"
-        />
-        <button id="submit">Log in</button>
-    </form>
+  <div className='loginContainer'>
+    <div className='loginWrapper'>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+            <div className='formContainer'>
+                <input 
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    onChange={handleChange}
+                    placeholder='username'
+                    id="username"
+                />
+                <input 
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    onChange={handleChange}
+                    placeholder='password'
+                    id="password"
+                />
+                <button className="loginButton" id="submit">Log in</button>
+            </div>
+        </form>
+        </div>
   </div>);
 };
