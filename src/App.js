@@ -1,19 +1,40 @@
 import Header from './components/Header';
 import './App.css';
 import Login from './components/Login';
+import NotFound from './components/NotFound';
+import Logout from './components/Logout';
+import Register from './components/Register';
 
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+
 import Dashboard from './components/Dashboard';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+
+import {LoggedInContext} from './contexts/LoggedInContext';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      setIsLoggedIn(true)
+    }  
+  }, [])
+
   return (
     <div className="App">
-        <Header />
-        <Route exact path='/login' component={Login} />
-        <Route path='/' component={Login} />
+        <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path='/logout' component={Logout} />
+            <Route exact path='/register' component={Register} />
+            <Route component={NotFound}/>
+          </Switch>
+        </LoggedInContext.Provider>
     </div>
   );
 }
