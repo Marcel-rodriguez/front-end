@@ -1,0 +1,13 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.links {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.5%;
+}

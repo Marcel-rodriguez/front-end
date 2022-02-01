@@ -1,0 +1,45 @@
+body {
+    background-color: aliceblue;
+}
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+.loginWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: whitesmoke;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    padding: 5%;
+}
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+
+#username, #password {
+    padding: 5%;
+    margin: 3%;
+    
+}
+
+.loginButton {
+    padding:5%;
+    width: 50%;
+    margin-top: 4%;
+    
+}
+
+.loginLink, .dashboardLink {
+    text-decoration: none;
+}
