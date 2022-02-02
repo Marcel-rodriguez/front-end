@@ -14,6 +14,7 @@ export default function Login() {
         password: ""
     })
 
+
     const [error, setError] = useState(false)
     
     const handleChange = e => {
@@ -26,26 +27,21 @@ export default function Login() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.get('https://secret-family-recipes-8.herokuapp.com/api/users')
+        axios.post('https://secret-family-recipes-8.herokuapp.com/api/auth/login', credentials)
         .then(resp => {
-            for(let i = 0; i < resp.data.length; i++){
-                if(resp.data[i].username === credentials.username /*&& resp.data[i].password === credentials.password*/){
-                    localStorage.setItem('username', resp.data[i].username)
-                    localStorage.setItem('role', 'user')
-                    setIsLoggedIn(true)
-                    push('/dashboard')
-                } else {
-                    setError(true)
-                }
+            localStorage.setItem('token', resp.data.token)
+            localStorage.setItem('role', 'user')
+            if(resp.data.token){
+                push('/dashboard')
+                setIsLoggedIn(true)
             }
-        }).catch(err => console.error(err))
+        }).catch(err => {
+            setError(true)
+            console.log(err)
+        })
     }
 
   return (
-<<<<<<< HEAD
-=======
-    
->>>>>>> 43c74d6748650467e5f4c6784ec3ad6a6b9fb351
   <div className='loginContainer'>
     <div className='loginWrapper'>
         <h1>Login</h1>
@@ -68,7 +64,7 @@ export default function Login() {
                     id="password"
                 />
                 <button className="loginButton" id="submit">Log in</button>
-                {error && <p>Username or Password is incorrect!</p>}
+                {error && <p className='error-message'>Username or Password is incorrect!</p>}
                 <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
             </div>
         </form>
@@ -78,9 +74,5 @@ export default function Login() {
             {error && <p>Username or Password is incorrect!</p>}
             <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
         </div>
-<<<<<<< HEAD
-    </div>)
-=======
   </div>);
->>>>>>> 43c74d6748650467e5f4c6784ec3ad6a6b9fb351
 };

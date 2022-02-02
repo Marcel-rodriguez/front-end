@@ -7,7 +7,6 @@ function Logout() {
   const {push} = useHistory()
     useEffect(() => {
         localStorage.removeItem('token')
-        localStorage.removeItem('username')
         localStorage.removeItem('role')
         setIsLoggedIn(false)
         push('/')
