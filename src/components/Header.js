@@ -9,12 +9,13 @@ function Header() {
   return (
     <nav>
         <div className='headerTitle'>
-            <h3>Secret Family Recipes #8</h3>
+            <h1>Secret Family Recipes #8</h1>
         </div>
         <div className='links'>
             {!isLoggedIn && <Link className="loginLink" to='/login'>Login</Link>}
             {isLoggedIn && <Link className='loginLink' to='/logout'>Logout</Link>}
             {isLoggedIn && <Link className='dashboardLink' to='/dashboard'>Dashboard</Link>}
+            {isLoggedIn && <Link className='loginLink' to='/recipeform'>Add Recipe</Link> }
         </div>
     </nav>);
 }
