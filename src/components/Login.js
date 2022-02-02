@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-// import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import "../styles/login.css";
-=======
 import React, { useState, useContext} from 'react';
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 import {LoggedInContext} from '../contexts/LoggedInContext';
->>>>>>> 0e766f30d45c4f1e4a9707e1f61033100a3555e6
+import "../styles/login.css";
 
 export default function Login() {
 
@@ -48,7 +42,6 @@ export default function Login() {
     }
 
   return (
-<<<<<<< HEAD
   <div className='loginContainer'>
     <div className='loginWrapper'>
         <h1>Login</h1>
@@ -73,31 +66,11 @@ export default function Login() {
                 <button className="loginButton" id="submit">Log in</button>
             </div>
         </form>
+    </div>
+    
+        <div>
+            {error && <p>Username or Password is incorrect!</p>}
+            <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
         </div>
-=======
-  <div>
-    <h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-        <input 
-            type="text"
-            name="username"
-            value={credentials.username}
-            onChange={handleChange}
-            placeholder='username'
-            id="username"
-        />
-        <input 
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            placeholder='password'
-            id="password"
-        />
-        <button id="submit">Log in</button>
-        {error && <p>Username or Password is incorrect!</p>}
-        <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
-    </form>
->>>>>>> 0e766f30d45c4f1e4a9707e1f61033100a3555e6
-  </div>);
+    </div>)
 };

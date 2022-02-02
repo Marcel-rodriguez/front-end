@@ -6,6 +6,10 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .loginWrapper {
@@ -38,8 +42,4 @@ body {
     width: 50%;
     margin-top: 4%;
     
-}
-
-.loginLink, .dashboardLink {
-    text-decoration: none;
 }

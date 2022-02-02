@@ -1,0 +1,40 @@
+.formWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: whitesmoke;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    padding: 5%;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formInput {
+    margin: 7%;
+    width: 100%;
+    
+}
+
+label {
+    margin-right: 10%;
+}
+
+#image {
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+h1 {
+    margin-bottom: 20%;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
