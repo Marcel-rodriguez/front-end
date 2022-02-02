@@ -10,7 +10,7 @@ function Header() {
   return (
     <nav>
         <div className='headerTitle'>
-            <h3>Grandma's Secret Recipes</h3>
+            <h3>Secret Family Recipes #8</h3>
         </div>
         <div className='links'>
     

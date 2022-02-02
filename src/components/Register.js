@@ -27,9 +27,11 @@ function Register() {
     }
 
   return (
-  <div>
+  <div className='loginContainer'>
+      <div className='loginWrapper'>
     <h1>Register</h1>
     <form onSubmit={handleSubmit}>
+        <div className='formContainer'>
         <input 
             type="text"
             name="username"
@@ -46,9 +48,11 @@ function Register() {
             placeholder='password'
             id="password"
         />
-        <button id="submit">Register</button>
+        <button className="loginButton" id="submit">Register</button>
         <p>Already have an account? <Link to='/login'>Login Here</Link></p>
+        </div>
     </form>
+    </div>
   </div>);
 };
 
