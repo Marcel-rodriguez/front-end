@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import dummyData from '../temporary data/dummyData';
 import axiosWithAuth from '../authentication/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 import EditRecipeForm from './EditRecipeForm';

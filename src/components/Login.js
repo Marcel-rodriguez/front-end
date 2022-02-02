@@ -69,10 +69,5 @@ export default function Login() {
             </div>
         </form>
     </div>
-    
-        <div>
-            {error && <p>Username or Password is incorrect!</p>}
-            <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
-        </div>
   </div>);
 };
