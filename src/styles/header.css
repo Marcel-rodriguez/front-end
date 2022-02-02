@@ -11,3 +11,7 @@ nav {
     justify-content: space-evenly;
     margin-top: 1.5%;
 }
+
+.loginLink, .logoutLink, .dashboardLink {
+    text-decoration: none;
+}

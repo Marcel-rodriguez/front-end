@@ -4,6 +4,7 @@ import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Logout from './components/Logout';
 import Register from './components/Register';
+import RecipeForm from './components/RecipeForm';
 
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
@@ -32,6 +33,7 @@ function App() {
             <Route exact path='/login' component={Login} />
             <PrivateRoute exact path='/logout' component={Logout} />
             <Route exact path='/register' component={Register} />
+            <Route exact path='/recipeform' component={RecipeForm} />
             <Route component={NotFound}/>
           </Switch>
         </LoggedInContext.Provider>

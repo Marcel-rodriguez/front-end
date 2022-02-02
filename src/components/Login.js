@@ -42,7 +42,10 @@ export default function Login() {
     }
 
   return (
+<<<<<<< HEAD
+=======
     
+>>>>>>> 43c74d6748650467e5f4c6784ec3ad6a6b9fb351
   <div className='loginContainer'>
     <div className='loginWrapper'>
         <h1>Login</h1>
@@ -69,6 +72,15 @@ export default function Login() {
                 <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
             </div>
         </form>
+    </div>
+    
+        <div>
+            {error && <p>Username or Password is incorrect!</p>}
+            <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
         </div>
+<<<<<<< HEAD
+    </div>)
+=======
   </div>);
+>>>>>>> 43c74d6748650467e5f4c6784ec3ad6a6b9fb351
 };
