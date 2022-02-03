@@ -31,11 +31,9 @@ function RecipeForm() {
           .get("https://secret-family-recipes-8.herokuapp.com/api/sources")
           .then((res) => {
             const sources = res.data;
-            console.log(sources);
             source = sources.find((el) => el.source_name === familyMember);
           })
             .catch((err) => console.error(err));
-        console.log(source);
         if (source === undefined) {
           await axios
             .post("https://secret-family-recipes-8.herokuapp.com/api/sources", {
@@ -47,9 +45,7 @@ function RecipeForm() {
             })
             .catch((err) => console.error(err));
         }
-        console.log(source);
         const sourceId = JSON.stringify(source.source_id)
-        console.log(sourceId, typeof sourceId)
 
         const newRecipe = {
             recipe_name: title,
