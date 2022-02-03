@@ -25,7 +25,7 @@ function RecipeForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, familyMember, ingredients, instructions, category, image } = recipe;
+        const { title, familyMember, ingredients, instructions, image } = recipe;
         let source;
         await axios
           .get("https://secret-family-recipes-8.herokuapp.com/api/sources")
@@ -35,25 +35,32 @@ function RecipeForm() {
             source = sources.find((el) => el.source_name === familyMember);
           })
             .catch((err) => console.error(err));
-        console.log(source)
-            // if (source === undefined) {
-            //     axios.post("https://secret-family-recipes-8.herokuapp.com/api/sources", { source_name: familyMember })
-            //         .then(res2 => {
-            //             const newSource = res2.data
-            //             source = newSource
-            //         })
-            //         .catch(err => console.error(err))
+        console.log(source);
+        if (source === undefined) {
+          await axios
+            .post("https://secret-family-recipes-8.herokuapp.com/api/sources", {
+              source_name: familyMember,
+            })
+            .then((res2) => {
+              const newSource = res2.data;
+              source = newSource;
+            })
+            .catch((err) => console.error(err));
+        }
+        console.log(source);
+        const sourceId = JSON.stringify(source.source_id)
+        console.log(sourceId, typeof sourceId)
 
         const newRecipe = {
             recipe_name: title,
             recipe_img_url: image,
             recipe_ingredients: ingredients,
             recipe_instructions: instructions,
-            source_id: source.source_id,
-            category_id: 1
+            source_id: sourceId,
+            category_id: '1'
         }
         axiosWithAuth()
-            .post('https://secret-family-recipes-8.herokuapp.com/api/recipes', newRecipe)
+            .post('/api/recipes', newRecipe)
             .then(resp => {
                 console.log(resp)
             }).catch(err => {
