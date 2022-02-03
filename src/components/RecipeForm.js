@@ -25,7 +25,7 @@ function RecipeForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, familyMember, ingredients, instructions, image } = recipe;
+        const { title, familyMember, ingredients, instructions, image, category } = recipe;
         let source;
         await axios
           .get("https://secret-family-recipes-8.herokuapp.com/api/sources")
@@ -45,7 +45,28 @@ function RecipeForm() {
             })
             .catch((err) => console.error(err));
         }
+
+        let theCategory;
+        await axios
+          .get("https://secret-family-recipes-8.herokuapp.com/api/categories")
+          .then((res) => {
+            const cats = res.data;
+            theCategory = cats.find((el) => el.category_name === category);
+          })
+            .catch((err) => console.error(err));
+        if (theCategory === undefined) {
+            await axios.post("https://secret-family-recipes-8.herokuapp.com/api/categories", {
+                category_name: category
+            })
+                .then(resp => {
+                    const newC = resp.data;
+                    theCategory = newC;
+                })
+                .catch(err => console.error(err))
+        }
+
         const sourceId = JSON.stringify(source.source_id)
+        const categoryId = JSON.stringify(theCategory.category_id)
 
         const newRecipe = {
             recipe_name: title,
@@ -53,7 +74,7 @@ function RecipeForm() {
             recipe_ingredients: ingredients,
             recipe_instructions: instructions,
             source_id: sourceId,
-            category_id: '1'
+            category_id: categoryId
         }
         axiosWithAuth()
             .post('/api/recipes', newRecipe)
