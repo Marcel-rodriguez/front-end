@@ -51,7 +51,7 @@ function RecipeForm() {
           .get("https://secret-family-recipes-8.herokuapp.com/api/categories")
           .then((res) => {
             const cats = res.data;
-            source = cats.find((el) => el.category_name === category);
+            theCategory = cats.find((el) => el.category_name === category);
           })
             .catch((err) => console.error(err));
         if (theCategory === undefined) {
