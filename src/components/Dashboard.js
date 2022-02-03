@@ -42,7 +42,7 @@ function Dashboard() {
                   return item
               }
           }).map(recipe => {
-              return <div  className='recipe-cards' key={recipe.recipe_name}>
+              return <div className='recipe-cards' key={recipe.recipe_name}>
                   <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
                   <img src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGFzdGF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' />
               </div>
