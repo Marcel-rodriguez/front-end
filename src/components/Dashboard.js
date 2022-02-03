@@ -1,30 +1,43 @@
 import React, {useEffect, useState} from 'react';
-
-import dummyData from '../temporary data/dummyData';
 import SearchBar from './SearchBar';
 
 import axiosWithAuth from '../authentication/axiosWithAuth'
 
 function Dashboard() {
     const [recipes, setRecipes] = useState([])
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         axiosWithAuth()
         .get('/api/recipes')
         .then(resp => {
             setRecipes(resp.data)
+            console.log(resp)
         }).catch(err => console.error(err))
     }, [])
+
+    const specificRecipe = (term) => {
+        setSearch(term)
+    }
 
   return(
       <div className='dashboard'>
           <h2>Search for Secret Recipes!</h2>
-          <SearchBar />
+          <SearchBar specificRecipe={specificRecipe} recipes={recipes}/>
           <div className='dashboard-container'>
-          {recipes.map(recipe => {
+          {recipes.filter(item => {
+              const searchByName = item.recipe_name.toLowerCase().includes(search.toLowerCase())
+              const searchByPerson = item.source_name.toLowerCase().includes(search.toLowerCase())
+
+              if(search === ''){
+                  return item
+              } else if(searchByName || searchByPerson){
+                  return item
+              }
+          }).map(recipe => {
               return <div  className='recipe-cards' key={recipe.recipe_name}>
                   <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
-                  <img src='https://i.picsum.photos/id/446/300/300.jpg?hmac=U2WhK6U8yn7l_qR3SrFEVKcSaKkhedtxw25vBlFEges' alt='https://i.picsum.photos/id/446/300/300.jpg?hmac=U2WhK6U8yn7l_qR3SrFEVKcSaKkhedtxw25vBlFEges' />
+                  <img src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGFzdGF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' />
               </div>
           })}
         </div>

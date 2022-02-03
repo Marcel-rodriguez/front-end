@@ -5,6 +5,10 @@ nav {
     margin-right: 4%;
 }
 
+nav h1 {
+    font-family: "Architects Daughter", cursive;
+}
+
 .links {
     width: 20%;
     display: flex;
@@ -12,6 +16,8 @@ nav {
     margin-top: 1.5%;
 }
 
-.loginLink, .logoutLink, .dashboardLink {
+.loginLink,
+.logoutLink,
+.dashboardLink {
     text-decoration: none;
 }
