@@ -6,7 +6,7 @@ const initialRecipe = {
     id: 0,
     title: '',
     familyMember: '',
-    ingredients: [],
+    ingredients: '',
     instructions: '',
     category: '',
     image: '',
@@ -22,15 +22,25 @@ function RecipeForm() {
         })
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // axiosWithAuth()
-        //     .post('', recipe)
-        //     .then(resp => {
-        //         console.log(resp)
-        //     }).catch(err => {
-        //         console.log(err)
-        //     })
+        const { title, familyMember, ingredients, instructions, category, image } = recipe;
+
+        const newRecipe = {
+            recipe_name: title,
+            recipe_img_url: image,
+            recipe_ingredients: ingredients,
+            recipe_instructions: instructions,
+            source_id: 1,
+            category_id: 1
+        }
+        axiosWithAuth()
+            .post('https://secret-family-recipes-8.herokuapp.com/api/recipes', newRecipe)
+            .then(resp => {
+                console.log(resp)
+            }).catch(err => {
+                console.log(err)
+            })
     }
     
   return (
