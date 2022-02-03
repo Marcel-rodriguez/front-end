@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext } from 'react';
 
-import dummyData from '../temporary data/dummyData';
 import SearchBar from './SearchBar';
 import { useHistory } from 'react-router-dom';
 
@@ -10,7 +9,7 @@ import { SelectedRecipeContext } from '../contexts/SelectedRecipeContext';
 
 function Dashboard() {
     const { push } = useHistory();
-    const { selectRecipe } = useContext(SelectedRecipeContext)
+    const { setSelectedRecipe } = useContext(SelectedRecipeContext)
     const [recipes, setRecipes] = useState([])
     const [search, setSearch] = useState('')
 
@@ -25,6 +24,13 @@ function Dashboard() {
 
     const specificRecipe = (term) => {
         setSearch(term)
+    }
+
+    const handleViewRecipe = (e, item) => {
+        e.preventDefault()
+        console.log(item.recipe_id)
+        setSelectedRecipe(item)
+        push(`/recipe/${item.recipe_id}`)
     }
 
   return(
@@ -42,10 +48,10 @@ function Dashboard() {
                   return item
               }
           }).map(recipe => {
-              return <div className='recipe-cards' key={recipe.recipe_name}>
-                  <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
-                  <img src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGFzdGF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' />
-              </div>
+              return <div onClick={(e) => handleViewRecipe(e, recipe)} className='recipe-cards' key={recipe.recipe_id}>
+              <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
+              <img src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGFzdGF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' />
+          </div>
           })}
         </div>
       </div>

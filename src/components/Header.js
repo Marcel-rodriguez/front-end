@@ -13,9 +13,9 @@ function Header() {
         </div>
         <div className='links'>
             {!isLoggedIn && <Link className="loginLink" to='/login'>Login</Link>}
-            {isLoggedIn && <Link className='loginLink' to='/logout'>Logout</Link>}
             {isLoggedIn && <Link className='dashboardLink' to='/dashboard'>Dashboard</Link>}
             {isLoggedIn && <Link className='loginLink' to='/recipeform'>Add Recipe</Link> }
+            {isLoggedIn && <Link className='loginLink' to='/logout'>Logout</Link>}
         </div>
     </nav>);
 }

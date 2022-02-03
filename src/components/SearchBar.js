@@ -1,4 +1,3 @@
-import axiosWithAuth from '../authentication/axiosWithAuth';
 import React, {useState} from 'react';
 
 function SearchBar({specificRecipe}) {
