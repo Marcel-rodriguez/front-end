@@ -1,9 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext } from 'react';
+
+import dummyData from '../temporary data/dummyData';
 import SearchBar from './SearchBar';
+import { useHistory } from 'react-router-dom';
 
 import axiosWithAuth from '../authentication/axiosWithAuth'
 
+import { SelectedRecipeContext } from '../contexts/SelectedRecipeContext';
+
 function Dashboard() {
+    const { push } = useHistory();
+    const { selectRecipe } = useContext(SelectedRecipeContext)
     const [recipes, setRecipes] = useState([])
     const [search, setSearch] = useState('')
 
