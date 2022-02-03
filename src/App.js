@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
         <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
-          <SelectedRecipeContext.Provider value={{selectedRecipe, selectRecipe}}>
+          <SelectedRecipeContext.Provider value={{selectedRecipe, setSelectedRecipe}}>
             <Header />
             <Switch>
               <Route path='/recipe/:id' component={ViewRecipe}/>
@@ -41,7 +41,7 @@ function App() {
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/logout' component={Logout} />
               <Route exact path='/register' component={Register} />
-              <Route exact path='/recipeform' component={RecipeForm} />
+              <PrivateRoute exact path='/recipeform' component={RecipeForm} />
               <Route exact path='/' component={Login} />
               <Route component={NotFound}/>
             </Switch>

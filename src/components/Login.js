@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 import {LoggedInContext} from '../contexts/LoggedInContext';
@@ -13,6 +13,13 @@ export default function Login() {
         username: "",
         password: ""
     })
+
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+            localStorage.removeItem('token')
+            setIsLoggedIn(false)
+        }
+    },[])
 
 
     const [error, setError] = useState(false)

@@ -4,28 +4,29 @@ import { useHistory } from 'react-router-dom';
 import EditRecipeForm from './EditRecipeForm';
 import { SelectedRecipeContext } from '../contexts/SelectedRecipeContext';
 
-function ViewRecipe(props) {
+function ViewRecipe() {
   const { selectedRecipe } = useContext(SelectedRecipeContext)
   const [editing, setEditing] = useState(false)
 
   const { push } = useHistory();
 
-//get current recipe
+// get current recipe
 
-//   useEffect(() => {
-//     axiosWithAuth()
-//         .get(`/recipes/${recipeId}`)
-//         .then(resp => {
-//             console.log(resp);
-//         }).catch(err => {
-//             console.log(err);
-//         })
-// }, [])
+  useEffect(() => {
+    // axiosWithAuth()
+    //     .get(`/api/recipes/${}`)
+    //     .then(resp => {
+    //         console.log(resp);
+    //     }).catch(err => {
+    //         console.log(err);
+    //     })
+    console.log(selectedRecipe)
+}, [])
   
-  // const handleEdit = e => {
-  //   e.preventDeafult();
-  //   return <EditRecipeForm recipeId={recipeId} />
-  // }
+  const handleEdit = e => {
+    e.preventDeafult();
+    return <EditRecipeForm />
+  }
 
 
   console.log(selectedRecipe)
@@ -33,8 +34,8 @@ function ViewRecipe(props) {
     //buttons to edit and delete recipe
     //recipe scaffolding
       <div>
-          <h1>{selectedRecipe.recipe_name}</h1>
-          <p>{selectedRecipe.recipe_instructions}</p>
+          <h1>{selectedRecipe}</h1>
+          <p>{selectedRecipe}</p>
       </div>
   );
 }
