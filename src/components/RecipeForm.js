@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import axiosWithAuth from '../authentication/axiosWithAuth';
 import "../styles/recipeForm.css"
@@ -22,16 +23,33 @@ function RecipeForm() {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const { title, familyMember, ingredients, instructions, category, image } = recipe;
+        let source;
+        await axios
+          .get("https://secret-family-recipes-8.herokuapp.com/api/sources")
+          .then((res) => {
+            const sources = res.data;
+            console.log(sources);
+            source = sources.find((el) => el.source_name === familyMember);
+          })
+            .catch((err) => console.error(err));
+        console.log(source)
+            // if (source === undefined) {
+            //     axios.post("https://secret-family-recipes-8.herokuapp.com/api/sources", { source_name: familyMember })
+            //         .then(res2 => {
+            //             const newSource = res2.data
+            //             source = newSource
+            //         })
+            //         .catch(err => console.error(err))
 
         const newRecipe = {
             recipe_name: title,
             recipe_img_url: image,
             recipe_ingredients: ingredients,
             recipe_instructions: instructions,
-            source_id: 1,
+            source_id: source.source_id,
             category_id: 1
         }
         axiosWithAuth()
@@ -72,7 +90,7 @@ function RecipeForm() {
                     <label >Image</label>
                     <input type="file" value={recipe.image} id="image" name="image" onChange={handleChange} />
                 </div>
-
+                <button onSubmit={handleSubmit}>Submit</button>
             </form>
         </div>
   </div>);
