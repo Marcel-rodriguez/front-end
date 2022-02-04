@@ -1,0 +1,80 @@
+.viewRecipeContainer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.viewRecipeCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
+    border-radius: 1rem;
+    background-color: whitesmoke;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    padding: 2%;
+}
+
+.viewRecipeCard img {
+    height: auto;
+    width: auto;
+    max-width: 30rem;
+    max-height: 30rem;
+    border-radius: 0.3rem;
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructions ol {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.viewRecipeButtons {
+    display: flex;
+    margin: 0.5rem;
+    width: 50%;
+    height: 2rem;
+    justify-content: space-around;
+}
+
+.viewRecipeButtons button {
+    width: 40%;
+    height: 99%;
+    font-family: "Pacifico", cursive;
+}
+
+.viewRecipeButtons button:hover {
+    cursor: pointer;
+    font-size: 15.5px;
+    width: 41%;
+    height: 100%;
+}
+
+.deleteButton {
+    background: #ff9494;
+    border: none;
+    border-radius: 0.2rem;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.editButton {
+    background: #00fa9a;
+    border: none;
+    border-radius: 0.2rem;
+    font-weight: 100;
+    font-size: 15px;
+}

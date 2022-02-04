@@ -15,10 +15,12 @@ import React, {useEffect, useState} from 'react'
 
 import {LoggedInContext} from './contexts/LoggedInContext';
 import { SelectedRecipeContext } from './contexts/SelectedRecipeContext';
+import {RecipesContext} from './contexts/RecipesContext'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
+  const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
     if(localStorage.getItem('token')){
@@ -34,6 +36,7 @@ function App() {
     <div className="App">
         <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
           <SelectedRecipeContext.Provider value={{selectedRecipe, setSelectedRecipe}}>
+            <RecipesContext.Provider value={{recipes,setRecipes}}>
             <Header />
             <Switch>
               <Route path='/recipe/:id' component={ViewRecipe}/>
@@ -45,6 +48,7 @@ function App() {
               <Route exact path='/' component={Login} />
               <Route component={NotFound}/>
             </Switch>
+            </RecipesContext.Provider>
           </SelectedRecipeContext.Provider>
         </LoggedInContext.Provider>
     </div>
