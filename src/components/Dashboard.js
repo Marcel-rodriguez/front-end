@@ -51,8 +51,11 @@ function Dashboard() {
               }
           }).map(recipe => {
               return <div onClick={(e) => handleViewRecipe(e, recipe)} className='recipe-cards' key={recipe.recipe_id}>
-              <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
-              <img src={recipe.recipe_img_url ? recipe.recipe_img_url : 'https://picsum.photos/536/354' }/>
+                
+                <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
+                <div className='recipeImageContainer'>
+                    <img src={recipe.recipe_img_url ? recipe.recipe_img_url : 'https://picsum.photos/536/354' } alt='food' className='recipeImage'/>
+              </div>
           </div>
           })}
         </div>
