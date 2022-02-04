@@ -27,16 +27,16 @@ function RecipeForm() {
         e.preventDefault();
         const { title, familyMember, ingredients, instructions, image, category } = recipe;
         let source;
-        await axios
-          .get("https://secret-family-recipes-8.herokuapp.com/api/sources")
+        await axiosWithAuth()
+          .get("/api/sources")
           .then((res) => {
             const sources = res.data;
             source = sources.find((el) => el.source_name === familyMember);
           })
             .catch((err) => console.error(err));
         if (source === undefined) {
-          await axios
-            .post("https://secret-family-recipes-8.herokuapp.com/api/sources", {
+          await axiosWithAuth()
+            .post("/api/sources", {
               source_name: familyMember,
             })
             .then((res2) => {
@@ -47,15 +47,15 @@ function RecipeForm() {
         }
 
         let theCategory;
-        await axios
-          .get("https://secret-family-recipes-8.herokuapp.com/api/categories")
+        await axiosWithAuth()
+          .get("/api/categories")
           .then((res) => {
             const cats = res.data;
             theCategory = cats.find((el) => el.category_name === category);
           })
             .catch((err) => console.error(err));
         if (theCategory === undefined) {
-            await axios.post("https://secret-family-recipes-8.herokuapp.com/api/categories", {
+            await axiosWithAuth().post("/api/categories", {
                 category_name: category
             })
                 .then(resp => {
@@ -70,7 +70,7 @@ function RecipeForm() {
 
         const newRecipe = {
             recipe_name: title,
-            recipe_img_url: image,
+            recipe_img_url: image || 'https://picsum.photos/536/354',
             recipe_ingredients: ingredients,
             recipe_instructions: instructions,
             source_id: sourceId,
