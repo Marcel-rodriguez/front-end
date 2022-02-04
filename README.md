@@ -2,7 +2,7 @@ We have been using Live-Share, so many of our changes were made in a single bran
 
 # Secret Family Recipes Cookbook
 
-placeholder
+https://secret-family-recipes-cookbook-8.vercel.app/dashboard
 
 
 ## Table of contents
@@ -42,7 +42,7 @@ Keeping track of all your passed down family recipes is a pain, our Recipes Cook
 
 - Assignment: https://www.notion.so/Secret-Family-Recipes-Cookbook-ecf9be06b6044e9cb5e69eba6f82f658
 
-- Live Site URL: placeholder
+- Live Site URL: https://secret-family-recipes-cookbook-8.vercel.app/dashboard
 
 - Login Endpoint: https://secret-family-recipes-8.herokuapp.com/api/auth/login
 
