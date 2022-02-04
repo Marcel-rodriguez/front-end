@@ -42,10 +42,11 @@ function Dashboard() {
           {recipes.filter(item => {
               const searchByName = item.recipe_name.toLowerCase().includes(search.toLowerCase())
               const searchByPerson = item.source_name.toLowerCase().includes(search.toLowerCase())
+              const searchByCategory = item.category_name.toLowerCase().includes(search.toLocaleLowerCase())
 
               if(search === ''){
                   return item
-              } else if(searchByName || searchByPerson){
+              } else if(searchByName || searchByPerson || searchByCategory){
                   return item
               }
           }).map(recipe => {

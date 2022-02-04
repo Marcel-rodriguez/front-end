@@ -50,7 +50,7 @@ const EditRecipeForm = ({setEditing}) => {
     <div className='formContainer'>
         <div className='formWrapper'>
             <form onSubmit={handleSubmit}>
-                <h1>Add a recipe</h1>
+                <h1>Editing {recipe.recipe_name}</h1>
                 <div className='formInput'>
                     <label>Title</label>
                     <input value={recipe.recipe_name} id="title" name="recipe_name" onChange={handleChange} />

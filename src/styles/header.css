@@ -21,3 +21,24 @@ nav h1 {
 .dashboardLink {
     text-decoration: none;
 }
+
+@media (max-width: 1440px) {
+    .links {
+        width: 30%;
+    }
+}
+
+@media (max-width: 840px) {
+    .links {
+        width: 40%;
+    }
+}
+
+@media (max-width: 600px) {
+    .links {
+        width: 100%;
+    }
+    h1 {
+        display: none;
+    }
+}

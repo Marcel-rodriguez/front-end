@@ -13,11 +13,30 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     background-color: whitesmoke;
     box-shadow: 0 0 20px 8px #d0d0d0;
     padding: 3%;
     border-radius: 1rem;
+}
+
+.formWrapper button {
+    background: #00fa9a;
+    border: none;
+    border-radius: 0.2rem;
+    font-weight: 100;
+    font-size: 15px;
+    margin-top: 1.5rem;
+    width: 50%;
+    height: 2rem;
+    font-family: "Pacifico", cursive;
+}
+
+.formWrapper button:hover {
+    cursor: pointer;
+    width: 51%;
+    height: 2.1rem;
+    font-size: 16px;
 }
 
 .formWrapper form {
@@ -48,6 +67,68 @@
 }
 
 h1 {
-    margin-bottom: 20%;
-    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10%;
+    font-family: "Supermercado One", cursive;
+}
+
+@media (max-width: 1080px) {
+    .formWrapper {
+        width: 50%;
+    }
+}
+
+@media (max-width: 840px) {
+    .formWrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 550px) {
+    .formWrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .formContainer {
+        width: 100%;
+    }
+
+    .recipe-card img {
+        height: auto;
+        width: auto;
+        max-width: 150px;
+    }
+
+    .formWrapper {
+        width: 100%;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formWrapper form {
+        height: 80%;
+        width: 80%;
+        padding: 0.5rem;
+        margin: 1rem;
+        width: 100%;
+    }
+
+    .formWrapper form label {
+        display: none;
+    }
+
+    #image {
+        margin: 0;
+    }
+
+    .formInput {
+        justify-content: center;
+    }
+
+    .formContainer {
+        flex-direction: column;
+    }
 }
