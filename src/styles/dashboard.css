@@ -18,4 +18,5 @@ body {
     transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
+    width: 100%;
 }
