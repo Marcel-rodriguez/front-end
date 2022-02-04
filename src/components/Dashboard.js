@@ -19,7 +19,6 @@ function Dashboard() {
         .get('/api/recipes')
         .then(resp => {
             setRecipes(resp.data)
-            console.log(resp)
         }).catch(err => console.error(err))
     }, [])
 

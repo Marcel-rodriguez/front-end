@@ -27,7 +27,7 @@ function RecipeForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, familyMember, ingredients, instructions, image, category } = recipe;
+            const { title, familyMember, ingredients, instructions, image, category } = recipe;
         let source;
         await axiosWithAuth()
           .get("/api/sources")
@@ -81,11 +81,10 @@ function RecipeForm() {
         axiosWithAuth()
             .post('/api/recipes', newRecipe)
             .then(resp => {
-                console.log(resp)
+                push('/dashboard')
             }).catch(err => {
                 console.log(err)
             })
-            push('/dashboard')
     }
     
   return (
