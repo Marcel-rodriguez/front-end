@@ -6,6 +6,7 @@ import { SelectedRecipeContext } from '../contexts/SelectedRecipeContext';
 
 function ViewRecipe() {
   const { selectedRecipe } = useContext(SelectedRecipeContext)
+  const [recipe, setRecipe] = useState({})
   const [editing, setEditing] = useState(false)
 
   const { push } = useHistory();
@@ -13,13 +14,14 @@ function ViewRecipe() {
 // get current recipe
 
   useEffect(() => {
-    // axiosWithAuth()
-    //     .get(`/api/recipes/${}`)
-    //     .then(resp => {
-    //         console.log(resp);
-    //     }).catch(err => {
-    //         console.log(err);
-    //     })
+    axiosWithAuth()
+        .get(`/api/recipes/${selectedRecipe.recipe_id}`)
+        .then(resp => {
+            console.log(resp);
+            setRecipe(resp.data)
+        }).catch(err => {
+            console.log(err);
+        })
     console.log(selectedRecipe)
 }, [])
   
@@ -34,8 +36,8 @@ function ViewRecipe() {
     //buttons to edit and delete recipe
     //recipe scaffolding
       <div>
-          <h1>{selectedRecipe}</h1>
-          <p>{selectedRecipe}</p>
+          <h1>Recipe!</h1>
+          <p>{recipe.source_name}</p>
       </div>
   );
 }
