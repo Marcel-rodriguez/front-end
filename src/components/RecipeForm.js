@@ -112,7 +112,7 @@ function RecipeForm() {
                 </div>
                 <div className='formInput'>
                     <label >Image</label>
-                    <input type="file" value={recipe.image} id="image" name="image" onChange={handleChange} />
+                    <input type="text" value={recipe.image} id="image" name="image" onChange={handleChange} />
                 </div>
                 <button onSubmit={handleSubmit}>Submit</button>
             </form>
