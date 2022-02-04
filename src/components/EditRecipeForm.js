@@ -34,18 +34,49 @@ const EditRecipeForm = ({setEditing}) => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axiosWithAuth()
-        .put(`api/recipes/${selectedRecipe.recipe_id}`, recipe)
-        .then(resp => {
-            setSelectedRecipe(resp.data[0])
-        }).catch(err => console.error(err))
-        setEditing(false)
-        push(`/recipe/${selectedRecipe.recipe_id}`)
-        
+            let source;
+            await axiosWithAuth()
+           .get("/api/sources")
+           .then((res) => {
+             const sources = res.data;
+             source = sources.find((el) => el.source_name === recipe.source_name);
+           })
+             .catch((err) => console.error(err));
+         if (source === undefined) {
+           await axiosWithAuth()
+             .post("/api/sources", {
+               source_name: recipe.source_name,
+             })
+             .then((res2) => {
+               const newSource = res2.data;
+               source = newSource;
+             })
+             .catch((err) => console.error(err));
+         }
+ 
+         const sourceId = JSON.stringify(source.source_id)
+ 
+         const newRecipe = {
+             recipe_name: recipe.recipe_name,
+             recipe_img_url: recipe.recipe_img_url || 'https://picsum.photos/536/354',
+             recipe_ingredients: recipe.recipe_ingredients,
+             recipe_instructions: recipe.recipe_instructions,
+             source_id: sourceId,
+             source_name: recipe.source_name,
+             recipe_id: recipe.recipe_id,
+         }
+ 
+         axiosWithAuth()
+         .put(`api/recipes/${selectedRecipe.recipe_id}`, newRecipe)
+         .then(resp => {
+             setSelectedRecipe(resp.data[0])
+         }).catch(err => console.error(err))
+         setEditing(false)
+         push(`/recipe/${selectedRecipe.recipe_id}`)
     }
-    
+
   return (
     <div className='formContainer'>
         <div className='formWrapper'>
