@@ -19,7 +19,6 @@ function Dashboard() {
         .get('/api/recipes')
         .then(resp => {
             setRecipes(resp.data)
-            console.log(resp)
         }).catch(err => console.error(err))
     }, [])
 
@@ -42,16 +41,20 @@ function Dashboard() {
           {recipes.filter(item => {
               const searchByName = item.recipe_name.toLowerCase().includes(search.toLowerCase())
               const searchByPerson = item.source_name.toLowerCase().includes(search.toLowerCase())
+              const searchByCategory = item.category_name.toLowerCase().includes(search.toLocaleLowerCase())
 
               if(search === ''){
                   return item
-              } else if(searchByName || searchByPerson){
+              } else if(searchByName || searchByPerson || searchByCategory){
                   return item
               }
           }).map(recipe => {
               return <div onClick={(e) => handleViewRecipe(e, recipe)} className='recipe-cards' key={recipe.recipe_id}>
-              <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
-              <img src={recipe.recipe_img_url ? recipe.recipe_img_url : 'https://picsum.photos/536/354' }/>
+                
+                <h3>{recipe.source_name}'s {recipe.recipe_name}</h3>
+                <div className='recipeImageContainer'>
+                    <img src={recipe.recipe_img_url ? recipe.recipe_img_url : 'https://picsum.photos/536/354' } alt='food' className='recipeImage'/>
+              </div>
           </div>
           })}
         </div>
