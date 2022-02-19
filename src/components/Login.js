@@ -15,6 +15,8 @@ export default function Login() {
     })
 
     useEffect(() => {
+        // wakes heroku server on page mount
+        axios.get('https://secret-family-recipes-8.herokuapp.com/')
         if(localStorage.getItem('token')){
             localStorage.removeItem('token')
             setIsLoggedIn(false)
