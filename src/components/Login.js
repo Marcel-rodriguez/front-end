@@ -61,7 +61,7 @@ export default function Login() {
                     name="username"
                     value={credentials.username}
                     onChange={handleChange}
-                    placeholder='username'
+                    placeholder='username...'
                     id="username"
                 />
                 <input 
@@ -69,7 +69,7 @@ export default function Login() {
                     name="password"
                     value={credentials.password}
                     onChange={handleChange}
-                    placeholder='password'
+                    placeholder='password...'
                     id="password"
                 />
                       <button className="loginButton" id="submit">Log in</button>

@@ -54,3 +54,73 @@ body {
 .error-message {
     color: red;
 }
+
+@media (max-width: 1200px) {
+    .formContainer {
+        width: 100%;
+    }
+    .loginWrapper {
+        margin-top: 2rem;
+        width: 40%;
+    }
+
+    .App nav a {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .formContainer {
+        width: 100%;
+    }
+    .loginWrapper {
+        margin-top: 2rem;
+        width: 45%;
+    }
+
+    .App nav a {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 514px) {
+    .formContainer {
+        width: 100%;
+    }
+    .loginWrapper {
+        margin-top: 2rem;
+        width: 80%;
+    }
+
+    .App nav a {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 414px) {
+    .formContainer {
+        width: 100%;
+    }
+    .loginWrapper {
+        margin-top: 2rem;
+        width: 80%;
+    }
+
+    .App nav a {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .formContainer {
+        width: 100%;
+    }
+    .loginWrapper {
+        margin-top: 2rem;
+        width: 80%;
+    }
+
+    .App nav a {
+        margin-top: 2rem;
+    }
+}
