@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext } from 'react';
 
 import SearchBar from './SearchBar';
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import axiosWithAuth from '../authentication/axiosWithAuth'
 

@@ -39,7 +39,7 @@ function App() {
             <RecipesContext.Provider value={{recipes,setRecipes}}>
             <Header />
             <Switch>
-              <Route path='/recipe/:id' component={ViewRecipe}/>
+              <Route path='/recipe/:id' render={(props) => <ViewRecipe {...props} id={selectedRecipe} />}/>
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/logout' component={Logout} />

@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axiosWithAuth from '../authentication/axiosWithAuth';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import EditRecipeForm from './EditRecipeForm';
 import { SelectedRecipeContext } from '../contexts/SelectedRecipeContext';
 import { RecipesContext } from '../contexts/RecipesContext';
 
-function ViewRecipe() {
+function ViewRecipe(props) {
   const { selectedRecipe, setSelectedRecipe } = useContext(SelectedRecipeContext)
   const {setRecipe} = useContext(RecipesContext)
-  // const [recipe, setRecipe] = useState([])
   const [editing, setEditing] = useState(false)
+  const {id} = useParams()
 
   const { push } = useHistory();
 
@@ -17,7 +17,7 @@ function ViewRecipe() {
 
   useEffect(() => {
     axiosWithAuth()
-        .get(`/api/recipes/${selectedRecipe.recipe_id}`)
+        .get(`/api/recipes/${id}`)
         .then(resp => {
             setSelectedRecipe(resp.data[0])
         }).catch(err => {

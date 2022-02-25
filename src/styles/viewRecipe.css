@@ -112,3 +112,22 @@
         margin-top: 2rem;
     }
 }
+
+@media (max-width: 375px) {
+    .viewRecipeCard {
+        width: 90%;
+    }
+
+    .viewRecipeButtons {
+        width: 80%;
+    }
+    .editButton,
+    .deleteButton {
+        width: 50%;
+    }
+
+    .formInput{
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
