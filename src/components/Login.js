@@ -15,6 +15,8 @@ export default function Login() {
     })
 
     useEffect(() => {
+        // wakes heroku server on page mount
+        axios.get('https://secret-family-recipes-8.herokuapp.com/')
         if(localStorage.getItem('token')){
             localStorage.removeItem('token')
             setIsLoggedIn(false)
@@ -70,9 +72,10 @@ export default function Login() {
                     placeholder='password'
                     id="password"
                 />
-                <button className="loginButton" id="submit">Log in</button>
+                      <button className="loginButton" id="submit">Log in</button>
                 {error && <p className='error-message'>Username or Password is incorrect!</p>}
-                <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
+                      <p>Don't have an account? <Link to='/register'>Register Here</Link> </p>
+                      <p>Sample user - username:"demo" password:"1234"</p>
             </div>
         </form>
     </div>
